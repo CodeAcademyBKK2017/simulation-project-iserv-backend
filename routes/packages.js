@@ -1,15 +1,14 @@
 const post = require('../src/postpaid');
 const pre  = require('../src/prepaid');
 const Joi = require('joi');
+const responesPack = require('../joiSchema/packages')
 
 module.exports = {
     method: 'POST',
     path: '/packages',
     config:{
         validate:{
-            headers:Joi.object({
-                secret : Joi.string().alphanum().min(1).max(15).required()
-            }).options({ allowUnknown: true })
+            headers:responesPack.responesPack
         }
     },
     handler: (request,reply) => {
