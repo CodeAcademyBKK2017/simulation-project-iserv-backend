@@ -1,6 +1,5 @@
 const rp = require('request-promise');
 
-const VALIDATE_TOKEN_FAIL = 'VALIDATE_TOKEN_FAIL';
 const WRONG_TOKEN = 'WRONG_TOKEN';
 
 const API_PREPAID = 'https://code-academy-backend.herokuapp.com/prepaid';
@@ -8,12 +7,7 @@ const API_POSTPAID = 'https://code-academy-backend.herokuapp.com/postpaid';
 
 // ----------
 
-const getPackagesHandler = (request, reply) => {
-  const token = request.payload.token;// body param
-  // const token = request.headers.token;// header param
-
-  // -----
-
+const requestAllPackages = (token) => {
   var prepaidOptions = {
     method: 'GET',
     uri: API_PREPAID,
@@ -38,16 +32,21 @@ const getPackagesHandler = (request, reply) => {
   
   // -----
 
-  Promise.all([prepaidPromise, postpaidPromise]).
+  return Promise.all([prepaidPromise, postpaidPromise]).
     then(([prepaidData, postpaidData]) => {
-      reply({prepaid: prepaidData, postpaid: postpaidData});
+      const result = {
+        prepaid: prepaidData,
+        postpaid: postpaidData
+      };
+      return result;
     }).catch((err) => {
-      reply(err.message).code(400);
+      // throw err.message;
+      throw WRONG_TOKEN;
     });
 };
 
 // ----------
 
 module.exports = {
-  getPackagesHandler
+  requestAllPackages
 };
