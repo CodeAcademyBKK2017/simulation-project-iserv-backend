@@ -30,5 +30,6 @@ const requestAuth = (username) => {
 // ----------
 
 module.exports = {
-  requestAuth
+  requestAuth,
+  NOT_FOUND_USERNAME
 };

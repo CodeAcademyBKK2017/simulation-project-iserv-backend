@@ -50,5 +50,6 @@ const requestAllPackages = (token) => {
 // ----------
 
 module.exports = {
-  requestAllPackages
+  requestAllPackages,
+  WRONG_TOKEN
 };
