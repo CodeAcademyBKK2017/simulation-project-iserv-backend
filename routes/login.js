@@ -1,6 +1,6 @@
 const login = require('../src/login');
 const Boom = require('boom');
-const joiSchema = require('../joiSchema/c');
+const joiSchema = require('../joiSchema/login');
 
 module.exports = {
   method: 'POST',
