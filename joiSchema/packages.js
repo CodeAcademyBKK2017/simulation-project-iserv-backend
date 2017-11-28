@@ -12,13 +12,13 @@ const responseSchema = {
   schema: Joi.object().keys({
     prepaid: Joi.object().keys({
       packageName: Joi.string().required(),
-      startDate: Joi.date().required(),
+      startDate: Joi.string().required(),
       phone: Joi.string().required(),
       userDataKey: Joi.string().required()
 	  }).optional(),
     postpaid: Joi.object().keys({
       packageName: Joi.string().required(),
-      startDate: Joi.date().required(),
+      startDate: Joi.string().required(),
       phone: Joi.string().required(),
       userDataKey: Joi.string().required()
 	  }).optional()
