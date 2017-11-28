@@ -2,12 +2,11 @@ API TASK:
 
 https://code-academy-backend.herokuapp.com
 Apis available:
-```
 POST /login with body { user: "bob"} - this will give u the token
 GET /prepaid with header { secret: "user token u got from login"}
 POST /postpaid with body { secret: "user token u got from login"}
 POST /user with header { secret: "secret u got from combining userDataKey from postpaid + prepaid"}
-```
+
 
 # Task
 
@@ -26,16 +25,12 @@ response should be {
   postpaid: {data in json format from server}
 }
 
-3. Make GET /userdata?part='age' api which will fetch user data from backend server
+3. Make GET /userdata api which will fetch user data from backend server
 
-  part can be 'age','name','phone' if anything else return 400 error
-  part should be present in the request otherwise return 400 error
-
-Logic:
  - First hit postpaid and prepaid with the api login token
  - get userDataKey from postpaid and prepaid
  - hit the POST /user api on the server with headers {secret: postpaidUserDataKey + prepaidUserDataKey}
 
 response should be {
-  age: {data in string format from server}
+  userdata: {data in json format from server}
 }
