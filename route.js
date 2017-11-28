@@ -5,8 +5,17 @@ module.exports = {
     path: '/auth',
     handler: (request, reply) => {
       // reply(lib.auth(request.query.user));
-      const responseAuth = lib.auth(request.query.user);
-      responseAuth.then((data) => {
+      lib.auth(request.query.user).then((data) => {
+        reply(data).code(data.code);
+      });
+    }
+  },
+  'packages': {
+    method: 'POST',
+    path: '/packages',
+    handler: (request, reply) => {
+      const payloadJson = JSON.parse(request.payload); 
+      lib.packages(payloadJson.secret).then((data) => {
         reply(data).code(data.code);
       });
     }
