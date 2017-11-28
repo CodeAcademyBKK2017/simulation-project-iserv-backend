@@ -1,8 +1,9 @@
 const rp = require('request-promise');
-const Joi = require('joi');
 
 const VALIDATE_USERNAME_FAIL = 'VALIDATE_USERNAME_FAIL';
 const NOT_FOUND_USERNAME = 'NOT_FOUND_USERNAME';
+
+const API_LOGIN = 'https://code-academy-backend.herokuapp.com/login';
 
 // ----------
 
@@ -17,7 +18,7 @@ const getAuthHandler = (request, reply) => {
     // make request to backend
     var options = {
       method: 'POST',
-      uri: 'https://code-academy-backend.herokuapp.com/login',
+      uri: API_LOGIN,
       body: {
         user: `${username}`
       },
@@ -34,17 +35,6 @@ const getAuthHandler = (request, reply) => {
   } else {
     reply(VALIDATE_USERNAME_FAIL).code(400);
   }
-
-  // -----
-  
-  // const schema = Joi.object().keys({
-  //   username: Joi.string().regex(/^[a-zA-Z]+$/)
-  // }).with('username');
-
-  // // Return result.
-  // const result = Joi.validate({username: 'abc', birthyear: 1994}, schema);
-
-  // -----
 };
 
 // ----------
