@@ -1,4 +1,5 @@
 const authentication = require('./authentication');
+const packages = require('./packages');
 
 const Hapi = require('hapi');
 
@@ -11,6 +12,12 @@ server.route({
   method: 'GET',
   path: '/auth',
   handler: authentication.getAuthHandler
+});
+
+server.route({
+  method: 'POST',
+  path: '/packages',
+  handler: packages.getPackagesHandler
 });
 
 server.start(() => {
