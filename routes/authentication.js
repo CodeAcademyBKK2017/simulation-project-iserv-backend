@@ -1,3 +1,8 @@
+const Boom = require('Boom');
+const Joi = require('joi');
+
+// ----------
+
 const srcAuth = require('../src/authentication');
 
 // ----------
@@ -9,26 +14,32 @@ const VALIDATE_USERNAME_FAIL = 'VALIDATE_USERNAME_FAIL';
 const getAuth = {
   method: 'GET',
   path: '/auth',
+  config: {
+    validate: {
+      // params: {},
+      query: {
+        username: Joi.string().alphanum().min(1).max(10).required()
+      }
+      // headers: {},
+      // payload: {},
+    },
+    response: {
+      schema: Joi.object().keys({
+        token: Joi.string().token().required()
+      })
+    }
+  },
   handler: (request, reply) => {
     // input
     const {username} = request.query;
 
-    // validate input
-    const isString = (typeof (username) === 'string');
-    const isNotEmpty = (username.length > 0);
-    const isContainOnlyNumber = username.match(/^[0-9]+$/);
-
-    if (isString && isNotEmpty && !isContainOnlyNumber) {
-      // request service then reply at once
-      srcAuth.requestAuth(username).
-        then((data) => {
-          reply(data);
-        }).catch((err) => {
-          reply(err);
-        });
-    } else {
-      reply(VALIDATE_USERNAME_FAIL);
-    }
+    // request service then reply at once
+    srcAuth.requestAuth(username).
+      then((data) => {
+        reply(data);
+      }).catch((err) => {
+        reply(Boom.badRequest(err));
+      });
   }
 };
 

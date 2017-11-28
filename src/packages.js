@@ -1,5 +1,7 @@
 const rp = require('request-promise');
 
+// ----------
+
 const WRONG_TOKEN = 'WRONG_TOKEN';
 
 const API_PREPAID = 'https://code-academy-backend.herokuapp.com/prepaid';

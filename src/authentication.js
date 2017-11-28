@@ -1,5 +1,7 @@
 const rp = require('request-promise');
 
+// ----------
+
 const NOT_FOUND_USERNAME = 'NOT_FOUND_USERNAME';
 
 const API_LOGIN = 'https://code-academy-backend.herokuapp.com/login';
