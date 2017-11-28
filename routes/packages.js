@@ -4,6 +4,7 @@ const Joi = require('joi');
 // ----------
 
 const srcPackages = require('../src/packages');
+const joiSchema = require('../joiSchema/packages');
 
 // ----------
 
@@ -15,27 +16,8 @@ const postPackages = {
   method: 'POST',
   path: '/packages',
   config: {
-    validate: {
-      payload: {
-        token: Joi.string().token().required()
-      }
-    },
-    response: {
-      schema: Joi.object().keys({
-        prepaid: Joi.object().keys({
-          packageName: Joi.string().required(),
-          startDate: Joi.date().required(),
-          phone: Joi.string().required(),
-          userDataKey: Joi.string().required()
-        }).optional(),
-        postpaid: Joi.object().keys({
-          packageName: Joi.string().required(),
-          startDate: Joi.date().required(),
-          phone: Joi.string().required(),
-          userDataKey: Joi.string().required()
-        }).optional()
-      })
-    }
+    validate: joiSchema.requestSchema,
+    response: joiSchema.responseSchema
   },
   handler: (request, reply) => {
     // input

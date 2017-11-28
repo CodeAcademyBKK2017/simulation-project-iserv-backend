@@ -1,9 +1,9 @@
 const Boom = require('Boom');
-const Joi = require('joi');
 
 // ----------
 
 const srcAuth = require('../src/authentication');
+const joiSchema = require('../joiSchema/authentication');
 
 // ----------
 
@@ -15,19 +15,8 @@ const getAuth = {
   method: 'GET',
   path: '/auth',
   config: {
-    validate: {
-      // params: {},
-      query: {
-        username: Joi.string().alphanum().min(1).max(10).required()
-      }
-      // headers: {},
-      // payload: {},
-    },
-    response: {
-      schema: Joi.object().keys({
-        token: Joi.string().token().required()
-      })
-    }
+    validate: joiSchema.requestSchema,
+    response: joiSchema.responseSchema
   },
   handler: (request, reply) => {
     // input
