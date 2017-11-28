@@ -1,4 +1,4 @@
-const lib = require('../lib');
+const lib = require('../src/lib');
 
 test('/auth', () => lib.auth('bob').then((data) => {
   expect(data).toMatchObject({'code': 200,'token': 'c7b1a59ace5'});

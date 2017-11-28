@@ -68,8 +68,6 @@ const packagesPostpaid = (secret) => rp({
       'error': err.error.err
     };
   });
-  
-// auth('bob');
 
 module.exports = {
   auth: auth,
