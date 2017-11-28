@@ -4,7 +4,7 @@
   "description": "API TASK:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node index.js"
   },
   "repository": {
@@ -21,6 +21,8 @@
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "hapi": "^16.1.1"
+    "hapi": "^16.6.2",
+    "jest": "^21.2.1",
+    "request-promise": "^4.2.2"
   }
 }
