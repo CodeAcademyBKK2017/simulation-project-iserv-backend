@@ -1,14 +1,13 @@
 const libs = require('../src/lib');
 const boom = require('boom');
 const joi = require('joi');
+const requestSchema = require('../joiSchema/packages');
 module.exports = {
     method: 'POST',
     path: '/packages',
     config:{
       validate:{
-        headers:joi.object({
-          secret:joi.string().alphanum().min(1).max(15).required()
-        }).options({ allowUnknown: true })
+        headers:requestSchema.requestSchema
       }
     },
     handler: (request,reply) => {
