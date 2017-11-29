@@ -1,6 +1,5 @@
 const requestURL = require('request-promise');
-const getPrepaid = (url,token, responsePaidFunction)=>{
-    console.log(url,token)
+const getPrepaid = (url,token)=>{
     const options = {
         method: 'GET',
         uri: url,
@@ -9,15 +8,9 @@ const getPrepaid = (url,token, responsePaidFunction)=>{
         },
         json: true // Automatically stringifies the body to JSON
     };
-     requestURL(options)
-    .then(function (parsedBody) {
-        // POST succeeded...
-        responsePaidFunction(parsedBody);
-    })
-    .catch(function (err) {
-        // POST failed...
-        responsePaidFunction(err)
-    });
+     return requestURL(options)
+    .then(parsedBody => parsedBody)
+    .catch(err =>err);
 }
 
 module.exports = {

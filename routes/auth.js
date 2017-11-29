@@ -18,15 +18,14 @@ module.exports = {
     },
     handler: (request, reply) => {
         const url = GlobalParams.getLogin();
-        const responseFunction = (body)=>{
-            //console.log('body:', body);
-            reply({ "token":body})
-        }
         const req = request.query.user;
         if(!req && req.length < 1) {
             reply(Boom.badRequest('invalid user '));
         }else{ 
-            LoginApi.getLoginToken(url,req, responseFunction)
+            LoginApi.getLoginToken(url,req).then(token=>{
+                reply(token)
+            })
+            
         }
     },
 }

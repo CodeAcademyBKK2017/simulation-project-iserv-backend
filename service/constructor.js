@@ -4,7 +4,7 @@ class globalParam {
         this.login = `${this.host}/login`;
         this.prepaid  = `${this.host}/prepaid `;
         this.postpaid   = `${this.host}/postpaid`;
-        this.userdata   = `${this.host}/userdata`;
+        this.userdata   = `${this.host}/user`;
     }
 }
 

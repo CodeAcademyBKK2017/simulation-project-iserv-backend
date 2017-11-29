@@ -7,17 +7,13 @@ const getPrePostpaid = (token,responseFunction)=>{
     const urlPre = GlobalParams.getPrepaid();
     const urlPost = GlobalParams.getPostpaid();
 
-    const responsePaidFunction = (body)=>{
-        responses.prepaid = body
-        postpaid.getPostpaid(urlPost,token, responsePostFunction)
-    }
-    const responsePostFunction = (body)=>{
-        responses.postpaid = body
-        console.log(responses);
-        responseFunction(responses);
-    }
-
-    prepaid.getPrepaid(urlPre,token, responsePaidFunction)
+    prepaid.getPrepaid(urlPre,token).then(prepaid =>{
+            responses.prepaid = prepaid;
+        postpaid.getPostpaid(urlPost,token).then(postpaid =>{
+            responses.postpaid = postpaid;
+            responseFunction(responses);
+        })
+    })
    
 }
 

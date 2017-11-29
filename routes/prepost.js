@@ -2,6 +2,7 @@ const PrePostApi = require('../src/getPaidAndPost');
 const contructors = require('../service/constructor');
 const Joi = require('joi');
 const Boom = require('boom');
+const JoiScrema = require('../joiSchema/packageJoi')
 const GlobalParams = new contructors.globalParam();
 
 module.exports = {
@@ -9,15 +10,10 @@ module.exports = {
     path: '/packages',
     config:{
         validate:{
-            payload:{
-                secret: Joi.string().alphanum().min(1).max(11).required()
-            }
+            payload: JoiScrema.requestSchema
         },
         response:{
-            schema: Joi.object().keys({
-                prepaid:Joi.object().required(),
-                postpaid:Joi.object().required()
-            })
+            schema: JoiScrema.responseSchema
         }
     },
     handler: (request, reply) => {

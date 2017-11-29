@@ -1,6 +1,5 @@
 const requestURL = require('request-promise');
-const getLoginToken = (url,userName, responseFunction)=>{
-    console.log(url,userName)
+const getLoginToken = (url,userName)=>{
     const options = {
         method: 'POST',
         uri: url,
@@ -9,15 +8,9 @@ const getLoginToken = (url,userName, responseFunction)=>{
         },
         json: true // Automatically stringifies the body to JSON
     };
-     requestURL(options)
-    .then(function (parsedBody) {
-        // POST succeeded...
-        responseFunction(parsedBody);
-    })
-    .catch(function (err) {
-        // POST failed...
-        responseFunction(err)
-    });
+     return requestURL(options)
+    .then(parsedBody =>({"token":parsedBody}))
+    .catch(err => err);
 }
 
 module.exports = {
