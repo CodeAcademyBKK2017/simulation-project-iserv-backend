@@ -1,23 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1511790987181" clover="3.2.0">
-  <project timestamp="1511790987182" name="All files">
-    <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3" elements="17" coveredelements="16" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1">
-      <file name="operations.js" path="C:\Users\True\simulation-project-iserv-backend\operations.js">
-        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-      </file>
+<coverage generated="1511945078510" clover="3.2.0">
+  <project timestamp="1511945078510" name="All files">
+    <metrics statements="38" coveredstatements="38" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5" elements="43" coveredelements="43" complexity="0" loc="38" ncloc="38" packages="2" files="6" classes="6">
+      <package name="joiSchema">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="auth.js" path="C:\Users\True\simulation-project-iserv-backend\joiSchema\auth.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+        </file>
+        <file name="packages.js" path="C:\Users\True\simulation-project-iserv-backend\joiSchema\packages.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+        </file>
+        <file name="userdata.js" path="C:\Users\True\simulation-project-iserv-backend\joiSchema\userdata.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src">
+        <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <file name="auth.js" path="C:\Users\True\simulation-project-iserv-backend\src\auth.js">
+          <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+        </file>
+        <file name="packages.js" path="C:\Users\True\simulation-project-iserv-backend\src\packages.js">
+          <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="1" count="4" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
+          <line num="5" count="4" type="stmt"/>
+          <line num="6" count="4" type="stmt"/>
+          <line num="7" count="4" type="stmt"/>
+          <line num="8" count="4" type="stmt"/>
+          <line num="9" count="4" type="stmt"/>
+          <line num="10" count="4" type="stmt"/>
+          <line num="11" count="4" type="stmt"/>
+          <line num="12" count="4" type="stmt"/>
+          <line num="14" count="4" type="stmt"/>
+        </file>
+        <file name="userdata.js" path="C:\Users\True\simulation-project-iserv-backend\src\userdata.js">
+          <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
+        </file>
+      </package>
     </metrics>
   </project>
 </coverage>
