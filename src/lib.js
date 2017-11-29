@@ -69,7 +69,39 @@ const packagesPostpaid = (secret) => rp({
     };
   });
 
+const userData = (secret) => Promise.all([packagesPrepaid(secret), packagesPostpaid(secret)]).then(([responsePackagesPrepaid, responsePackagesPostpaid]) => {
+  const userDataKey = responsePackagesPostpaid.data.userDataKey.toString() + responsePackagesPrepaid.data.userDataKey.toString();
+  return user(userDataKey);
+}).catch(function (err) {
+  return {
+    'code': 400,
+    'error': 'ERROR'
+  };
+});
+
+const user = (userDataKey) => rp({
+  method: 'POST',
+  uri: 'https://code-academy-backend.herokuapp.com/user',
+  headers: {
+    secret: userDataKey
+  },
+  json: true
+}).
+  then(function (data) {
+    return {
+      'code': 200,
+      'data': data
+    };
+  }).
+  catch(function (err) {
+    return {
+      'code': parseInt(err.statusCode),
+      'error': err.error.err
+    };
+  });
+
 module.exports = {
   auth: auth,
-  packages: packages
+  packages: packages,
+  user: userData
 };
