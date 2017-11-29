@@ -1,20 +1,21 @@
 const Joi = require('joi');
 const joiSchemaAuth = require('../joiSchema/auth');
 const joiSchemaPackages = require('../joiSchema/packages');
+const joiSchemaUser = require('../joiSchema/user');
 
-test('[online][success][expect] /auth', () => {
-  const lib = require('../src/lib');
-  return lib.auth('bob').then((data) => {
-    expect(data).toMatchObject({'code': 200, 'token': 'c7b1a59ace5'});
-  });
-});
+// test('[online][success][expect] /auth', () => {
+//   const lib = require('../src/lib');
+//   return lib.auth('bob').then((data) => {
+//     expect(data).toMatchObject({'code': 200, 'token': 'c7b1a59ace5'});
+//   });
+// });
 
-test('[online][success][Joi] /auth', () => {
-  const lib = require('../src/lib');
-  return lib.auth('bob').then((data) => {
-    Joi.validate({data}, joiSchemaAuth.responseSchema);
-  });
-});
+// test('[online][success][Joi] /auth', () => {
+//   const lib = require('../src/lib');
+//   return lib.auth('bob').then((data) => {
+//     Joi.validate({data}, joiSchemaAuth.responseSchema);
+//   });
+// });
 
 test('[offline][success][mock + expect] /auth', () => {
   jest.resetModules();
@@ -80,15 +81,20 @@ test('[offline][success][mock + expect] /user', () => {
     return rp;
   });
   const lib = require('../src/lib');
-  lib.user('c7b1a59ace5').then((data) => {
-    expect(data).toMatchObject({
-      'code': 200,
-      'data': {
-        'name': 'Bobby',
-        'age': 65,
-        'phone': '+66238728295'
-      }
-    });
+  // return lib.user('c7b1a59ace5').then((data) => {
+  //   expect(data).toMatchObject({
+  //     'code': 200,
+  //     'data': {
+  //       'name': 'Bobby',
+  //       'age': 65,
+  //       'phone': '+66238728295'
+  //     }
+  //   });
+  // });
+  return lib.user('c7b1a59ace5').then((data) => {
+    console.log(data);
+    const {error} = Joi.validate(data, joiSchemaUser.responseSuccessSchema.schema); 
+    expect(error).toBeNull();
   });
 });
 
@@ -113,10 +119,15 @@ test('[offline][Fail][mock + expect] /user', () => {
     return rp;
   });
   const lib = require('../src/lib');
-  lib.user('c7b1a59ace5XXX').then((data) => {
-    expect(data).toMatchObject({
-      'code': 400,
-      'error': 'ERROR'
-    });
+  // return lib.user('c7b1a59ace5XXX').then((data) => {
+  //   expect(data).toMatchObject({
+  //     'code': 400,
+  //     'error': 'ERROR'
+  //   });
+  // });
+  return lib.user('c7b1a59ace5XXX').then((data) => {
+    console.log(data);
+    const {error} = Joi.validate(data, joiSchemaUser.responseFailureSchema.schema); 
+    expect(error).toBeNull();
   });
 });
