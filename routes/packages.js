@@ -1,7 +1,7 @@
 const post = require('../src/postpaid');
 const pre  = require('../src/prepaid');
 const Joi = require('joi');
-const responesPack = require('../joiSchema/packages')
+const responesPack = require('../joiSchema/packages');
 
 module.exports = {
     method: 'POST',
