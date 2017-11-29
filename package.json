@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/CodeAcademyBKK2017/simulation-project-iserv-backend#readme",
   "devDependencies": {
+    "jest": "^21.2.1",
     "nodemon": "^1.12.1"
   },
   "dependencies": {
     "hapi": "^16.6.2",
-    "jest": "^21.2.1",
     "request-promise": "^4.2.2"
   }
 }

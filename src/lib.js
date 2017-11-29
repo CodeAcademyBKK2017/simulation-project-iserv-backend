@@ -47,8 +47,24 @@ const getLogin = (user)=>{
      return result;
  })
  }
+ const getUser = (token)=>{
+    let options = {
+        method:'POST',
+        uri:'https://code-academy-backend.herokuapp.com/user',
+        headers:{
+            secret:token
+        },
+        json:true
+    };
+    return rp(options).then((printBody)=>{
+        let result = {};
+        result = printBody;
+        return result;
+    })
+ }
  module.exports = {
      getLogin:getLogin,
      prepaid:prepaid,
-     postpaid:postpaid
+     postpaid:postpaid,
+     getUser:getUser
  }
