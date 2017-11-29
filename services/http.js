@@ -4,7 +4,6 @@ const host = 'https://code-academy-backend.herokuapp.com';
 
 const defaultOptions = {
   json: true
-
 };
 
 module.exports = {
