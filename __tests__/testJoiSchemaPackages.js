@@ -14,9 +14,8 @@ test('JoiSchema: request post packages success 01', () => {
   };
   const schema = JoiSchema.requestSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).toBe(null);
 });
 
 test('JoiSchema: request post packages failure 01', () => {
@@ -27,9 +26,8 @@ test('JoiSchema: request post packages failure 01', () => {
   };
   const schema = JoiSchema.requestSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).not.toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).not.toBe(null);
 });
 
 test('JoiSchema: request post packages failure 02', () => {
@@ -40,9 +38,8 @@ test('JoiSchema: request post packages failure 02', () => {
   };
   const schema = JoiSchema.requestSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).not.toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).not.toBe(null);
 });
 
 // ----------
@@ -66,9 +63,8 @@ test('JoiSchema: response post packages success 01', () => {
   };
   const schema = JoiSchema.responseSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).toBe(null);
 });
 
 test('JoiSchema: response post packages success 02', () => {
@@ -84,9 +80,8 @@ test('JoiSchema: response post packages success 02', () => {
   };
   const schema = JoiSchema.responseSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).toBe(null);
 });
 
 test('JoiSchema: response post packages success 03', () => {
@@ -95,9 +90,8 @@ test('JoiSchema: response post packages success 03', () => {
   };
   const schema = JoiSchema.responseSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).toBe(null);
 });
 
 test('JoiSchema: response post packages failure 01', () => {
@@ -111,9 +105,8 @@ test('JoiSchema: response post packages failure 01', () => {
   };
   const schema = JoiSchema.responseSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).not.toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).not.toBe(null);
 });
 
 test('JoiSchema: response post packages failure 02', () => {
@@ -129,7 +122,6 @@ test('JoiSchema: response post packages failure 02', () => {
   };
   const schema = JoiSchema.responseSchema;
 
-  Joi.validate(value, schema, (err, value) => {
-    expect(err).not.toBe(null);
-  });
+  const result = Joi.validate(value, schema);
+  expect(result.error).not.toBe(null);
 });
