@@ -1,3 +1,7 @@
+// ----------
+// AUTH
+// ----------
+
 test('Src: request get auth success 01', () => {
   // prepare request mock of backend
   jest.resetModules();
@@ -36,6 +40,8 @@ test('Src: request get auth failure 01', () => {
   });
 });
 
+// ----------
+// PACKAGES
 // ----------
 
 test('Src: request post packages success 01', () => {
@@ -109,5 +115,55 @@ test('Src: request post packages failure 01', () => {
   const token = 'XXX';
   return srcPackages.requestAllPackages(token).catch((err) => {
     expect(err).toBe(srcPackages.WRONG_TOKEN);
+  });
+});
+
+// ----------
+// USER DATA
+// ----------
+
+test('Src: request get user data success 01', () => {
+  // prepare request mock of backend
+  jest.resetModules();
+  jest.mock('request-promise', () => {
+    const result = {
+      name: 'Bobby',
+      age: 65,
+      phone: '+66238728295'
+    };
+    const rp = (options) => Promise.resolve(result);
+    return rp;
+  });
+  
+  // import class that use request (request inside it will be replaced with mock)
+  const srcUserData = require('../src/userData');
+  
+  // start test with mock
+  const expectedValue = {
+    name: 'Bobby'
+  };
+  const token = 'c7b1a59ace5';
+  const part = 'name';
+  return srcUserData.requestUserData(token, part).then((data) => {
+	  expect(data).toEqual(expectedValue);
+  });
+});
+
+test('Src: request get user data failure 01', () => {
+  // prepare request mock of backend
+  jest.resetModules();
+  jest.mock('request-promise', () => {
+    const rp = (options) => Promise.reject('some error from backend');
+    return rp;
+  });
+	  
+  // import class that use request (request inside it will be replaced with mock)
+  const srcUserData = require('../src/userData');
+	  
+  // start test with mock
+  const token = 'XXX';
+  const part = 'name';
+  return srcUserData.requestUserData(token, part).catch((err) => {
+	  expect(err).toBe(srcUserData.WRONG_TOKEN);
   });
 });
