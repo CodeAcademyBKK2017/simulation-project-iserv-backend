@@ -2,6 +2,11 @@ const login = require('../src/login');
 const packages = require('../src/packages');
 
 test('test Login and get Token !!!', () => {
+	jest.resetModules();
+	jest.mock('request-promise', () => {
+		 const rp = (option) => Promise.resolve('c7b1a59ace5');
+		 return rp;
+	});
 	login.getToken('bob').then(res => {
 		// console.log('1:',res);
 		expect({token: `${res}`}).toEqual({token: "c7b1a59ace5"});
